@@ -1,0 +1,21 @@
+[project]
+name = "sr-cadlib"
+version = "0.1.0"
+description = "Fusion scripting helpers for building, placing and saving parts and assemblies."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Spark Robotic" }]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["sr_cadlib*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

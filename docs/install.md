@@ -1,30 +1,47 @@
 # Install
 
-This page describes a generic install for a Fusion API helper library. The exact package name, import path, and any extra install steps are to be completed when the code lands.
+SR CADLib is a library, not a Fusion add-in. Do not add it in the Scripts and Add-Ins dialog. An agent loads it from a Fusion MCP `execute_python` script (or the script runner) after the repo is on the Python path.
 
 ## Requirements
 
 - Autodesk Fusion
-- This repository, cloned or downloaded to a folder you can keep on disk
+- A local clone of this repository
 
-## Add the library
+## Put the library on the path
 
-1. Clone or download this repository:
+Clone the repo onto the machine that runs Fusion:
 
 ```
 git clone https://github.com/living-relation/sr-cadlib.git
 ```
 
-2. Make the library available to the Fusion Python scripts or add-ins that will use it. How that is done — for example as a package, a folder on the script path, or a copy next to a script — is to be completed when the code lands.
+Then, in the script the agent sends to Fusion, insert the clone root before importing:
 
-3. Confirm the library can be imported from a Fusion script. The import statement and a minimal check are to be completed when the code lands.
+```python
+import sys
+sys.path.insert(0, "/path/to/sr-cadlib")  # replace with the local clone path
+import sr_cadlib as cad
+```
 
-SR CADLib is a library, not a standalone Fusion add-in or script, so it is not added through the Scripts and Add-Ins dialog on its own. Scripts or add-ins that depend on it are installed in that dialog in the usual way.
+Optional, for a persistent install in that machine's Python:
+
+```
+pip install -e /path/to/sr-cadlib
+```
+
+Confirm:
+
+```python
+import sr_cadlib as cad
+print(cad.MM, cad.IN)
+```
+
+`MM` and `IN` work without Fusion. Calls that build or save geometry need Fusion to be running.
 
 ## Uninstall
 
-Remove the library from the path or location used in the steps above, then remove any local clone you no longer need. Details are to be completed when the code lands.
+Remove the clone from `sys.path` (or uninstall the editable package) and delete the local clone if it is no longer needed.
 
 ## Next
 
-See [Usage](usage.md) after the library is available to your scripts.
+[Usage](usage.md)

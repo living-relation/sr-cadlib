@@ -1,14 +1,12 @@
 # SR CADLib documentation
 
-A short wiki for **SR CADLib**, a Fusion API scripting helper library from Spark Robotic.
+Wiki for **SR CADLib**, an agent helper library for Fusion API scripting (Fusion MCP `execute_python` or the script runner). Not a human-facing add-in.
 
-| Page | What's in it |
+| Page | Contents |
 | --- | --- |
-| [Overview](overview.md) | What the library is, current status, and requirements |
-| [Install](install.md) | How to make the library available to Fusion scripts |
-| [Usage](usage.md) | How to call it, once the code lands |
-| [Development](development.md) | How to work on this repository |
-
-The library source is not in the repository yet. Where a procedure depends on that code, the page says so.
+| [Overview](overview.md) | What the library is, who it is for, requirements |
+| [Install](install.md) | How an agent puts the library on the Fusion Python path |
+| [Usage](usage.md) | Import, configure, build, save, registry; copy-paste API examples |
+| [Development](development.md) | Branch, test, and CI rules |
 
 Back to the [README](../README.md).

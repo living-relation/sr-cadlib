@@ -1,31 +1,26 @@
 # Overview
 
-SR CADLib is a Spark Robotic helper library for Autodesk Fusion API scripting. It provides shared building blocks so Fusion scripts and add-ins can create and place geometry without repeating the same low-level API calls.
+SR CADLib is a Spark Robotic helper library for AI agents driving Autodesk Fusion. An agent imports it from a Fusion MCP `execute_python` call (or the script runner), configures the Fusion project and folders, then builds, saves, and reopens parts without repeating low-level Fusion API boilerplate.
 
-It is part of the Spark Robotic (SR-) tool set for Fusion. The library is generic: it is not tied to a single product or project.
-
-## What this repository is today
-
-This repository currently holds documentation, a license, and a Python `.gitignore`. The library code has not been added yet. Feature-specific behavior in these docs is marked as to be completed when the code lands.
+It is generic: callers pass the project name, folder root, registry path, and log path into `configure()`. The library has no built-in product or machine paths.
 
 ## Features
 
-- Helpers for primitives, sketches, and extrudes.
-- Helpers for materials and placement.
-- Helpers for saving designs or components to Fusion data folders.
-- A part registry for looking up or recording parts used by scripts.
-
-The exact functions, arguments, and module layout are to be completed when the code lands.
+- Temporary solids, sketches, extrudes, holes, and combines
+- Materials and appearances
+- Placement matrices and occurrence insert
+- Save to Fusion data folders with part number and description
+- A local JSON registry of part key → Fusion file id
 
 ## Requirements
 
-- Autodesk Fusion
-
-No other requirements are documented yet. Runtime dependencies, if any, are to be completed when the code lands.
+- Autodesk Fusion (the `adsk` module), when building or saving
+- This repository on `sys.path` or installed with `pip install -e .`
+- Python 3.10+ for unit tests (`pytest`). Tests mock `adsk` and do not need Fusion.
 
 ## Status
 
-The library will be added in a follow-up pull request. Until then, treat this repository as the public home and documentation for **SR CADLib**.
+The library lives in the `sr_cadlib` package. Agents should start with the [README](../README.md) quick start and [Usage](usage.md).
 
 ## Further reading
 
